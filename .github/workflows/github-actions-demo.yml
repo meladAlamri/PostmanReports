@@ -1,0 +1,13 @@
+name: GitHub Actions Demo
+on: [push, pull_request]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    container:
+      image: postman/newman
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        
+      - name: List files in the repository
+        run: newman run "Restful Booker BVT.postman_collection.json"  -e Production.postman_environment.json           
